@@ -52,12 +52,24 @@ class PSP(object):
         cl += self.base
         self.write(self.sb % cl); self.write(data); self.write(self.sa);
 
+class getpsp:
+    @property
+    def get(self):
+        if self._sb is not None: return self._sb
+        else: self._sb = '\033[01;%dm'; self._sa = '\033[0;0m';
+        return self._sb
 
-psp = PSP(base=0)
+    def __init__(self, base=0, mode=0, debug=False):
+        self.base = base
+        self.mode = mode
+        self.debug = debug
+        if (self.debug):
+            self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
+
+
+psp = PSP(base=0, mode=0, debug=False)
 
 nrm = lambda m: psp.PutsC(PSP.nrm, m);
-nrmln = lambda m: psp.PutsCln(PSP.nrm, m);
-
 red = lambda m: psp.PutsC(PSP.red, m);
 grn = lambda m: psp.PutsC(PSP.grn, m);
 ylw = lambda m: psp.PutsC(PSP.ylw, m);
@@ -68,6 +80,7 @@ udl = lambda m: psp.PutsC(PSP.udl, m);
 wht = lambda m: psp.PutsC(PSP.wht, m);
 whtb = lambda m: psp.PutsC(PSP.bldwht, m);
 
+nrmln = lambda m: psp.PutsCln(PSP.nrm, m);
 redln = lambda m: psp.PutsCln(PSP.red, m);
 grnln = lambda m: psp.PutsCln(PSP.grn, m);
 ylwln = lambda m: psp.PutsCln(PSP.ylw, m);
@@ -79,4 +92,4 @@ whtln = lambda m: psp.PutsCln(PSP.wht, m);
 whtbln = lambda m: psp.PutsCln(PSP.bldwht, m);
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.dev5'

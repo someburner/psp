@@ -3,6 +3,7 @@ import os
 from setuptools import find_packages, setup
 
 NAME = 'psp'
+VERS = '0.0.dev5'
 PACKAGES = [ 'psp' ]
 META_PATH = os.path.join('psp', '__init__.py')
 KEYWORDS = [ 'color' 'colour' 'terminal' 'text' 'ansi' 'minimalist' ]
@@ -25,7 +26,7 @@ CLASSIFIERS = [
 if __name__ == '__main__':
     setup(
         name=NAME,
-        version='0.0.5',
+        version='0.0.dev5',
         description='python color printer - minimalist color printing',
         long_description='python simple (color) printing - simple barebones wrappers for 256-color stdout.',
         license='MIT',
@@ -35,7 +36,6 @@ if __name__ == '__main__':
         maintainer='Jeff Hufford',
         keywords=KEYWORDS,
         packages=['psp'],
-        #package_dir={'psp': ''},
         classifiers=CLASSIFIERS,
         python_requires='>=3.1',
     )
