@@ -17,7 +17,6 @@ almost any scripting language and get the same results
  I want in the case of debugging. Too much formatting and it quickly loses its
  utility.
 
-
 ## usage
 
 ```sh
@@ -28,25 +27,17 @@ pip3 install psp
 python3 -c "import psp; psp.redln('a red line');"
 ```
 
-
-### trash
-
-```
-#!/usr/bin/env python
---editable
---allow-unverified .
---no-binary
---no-compile
---ignore-installed
-```
+## With virtualenv
 
 ```sh
-virtualenv localenv --python=$(which python3) --unzip-setuptools --always-copy --never-download --no-setuptools
+virtualenv localenv --python=$(which python3)
+##--unzip-setuptools --always-copy --never-download --no-setuptools
 source localenv/bin/activate
 
 cd psp
 pip3 install . --upgrade
 #pip3 install --no-binary --no-compile .
+#--editable --ignore-installed
 ```
 
 #### end

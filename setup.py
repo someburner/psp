@@ -3,7 +3,7 @@ import os
 from setuptools import find_packages, setup
 
 NAME = 'psp'
-PACKAGES = 'psp'
+PACKAGES = [ 'psp' ]
 META_PATH = os.path.join('psp', '__init__.py')
 KEYWORDS = [ 'color' 'colour' 'terminal' 'text' 'ansi' 'minimalist' ]
 CLASSIFIERS = [
@@ -30,7 +30,7 @@ if __name__ == '__main__':
         maintainer='Jeff Hufford',
         keywords=KEYWORDS,
         packages=find_packages('psp'),
-        package_dir={'': '.'},
+        package_dir={'psp': 'psp'},
         classifiers=CLASSIFIERS,
         python_requires='>=3.5',
     )
