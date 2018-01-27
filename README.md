@@ -21,6 +21,9 @@ almost any scripting language and get the same results
 ## usage
 
 ```sh
+virtualenv testenv --python=$(which python3)
+source testenv/bin/activate
+
 pip3 install psp
 python3 -c "import psp; psp.redln('a red line');"
 ```
