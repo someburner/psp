@@ -67,7 +67,7 @@ class getpsp:
             self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
 
 
-psp = PSP(base=0, mode=0, debug=False)
+psp = PSP(base=0, mode=0, debug=True)
 
 nrm = lambda m: psp.PutsC(PSP.nrm, m);
 red = lambda m: psp.PutsC(PSP.red, m);
