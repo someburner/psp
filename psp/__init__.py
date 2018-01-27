@@ -30,12 +30,15 @@ class PSP(object):
         else: self._sa = '\033[0m';
         return self._sa
 
-    def __init__(self, base=0, mode=0):
-        self.base = base
-        self.mode = mode
-
     @property
     def write(self): return sys.stdout.write
+
+    def __init__(self, base=0, mode=0, debug=False):
+        self.base = base
+        self.mode = mode
+        self.debug = debug
+        if (self.debug):
+            self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
 
     def Puts(self, data):
         try: self.write(data);
@@ -76,7 +79,4 @@ whtln = lambda m: psp.PutsCln(PSP.wht, m);
 whtbln = lambda m: psp.PutsCln(PSP.bldwht, m);
 
 
-
-
-
-__version__ = '0.0.2'
+__version__ = '0.0.5'

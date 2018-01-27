@@ -25,7 +25,7 @@ CLASSIFIERS = [
 if __name__ == '__main__':
     setup(
         name=NAME,
-        version='0.0.4',
+        version='0.0.5',
         description='python color printer - minimalist color printing',
         long_description='python simple (color) printing - simple barebones wrappers for 256-color stdout.',
         license='MIT',
