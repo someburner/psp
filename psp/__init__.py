@@ -52,8 +52,9 @@ class PSP(object):
     def PutsCln(self, cl, data):
         cl += self.base
         try:
-            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa); self.write2('\n');
+            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa+'\n');
             self.flush2();
+            self.flush();
         except Exception as e: pass
 
     def PutsC(self, cl, data):
@@ -61,6 +62,7 @@ class PSP(object):
         try:
             self.write2(self.sb % cl); self.write2(data); self.write2(self.sa);
             self.flush2();
+            self.flush();
         except Exception as e: pass
 
 
