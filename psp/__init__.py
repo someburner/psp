@@ -33,7 +33,7 @@ class PSP(object):
     @property
     def write(self): return sys.stdout.write
 
-    @propery
+    @property
     def write2(self): return sys.__stderr__.write
 
     def __init__(self, base=0, mode=0, debug=False):
