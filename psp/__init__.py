@@ -34,7 +34,13 @@ class PSP(object):
     def write(self): return sys.stdout.write
 
     @property
+    def flush(self): return sys.stdout.flush
+
+    @property
     def write2(self): return sys.__stderr__.write
+
+    @property
+    def flush2(self): return sys.__stderr__.flush
 
     def __init__(self, base=0, mode=0, debug=False):
         self.base = base
@@ -44,16 +50,24 @@ class PSP(object):
             self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
 
     def Puts(self, data):
-        try: self.write2(data);
+        try:
+            self.write2(data);
+            if ( str(data).endswith('\n') ): self.flush2();
         except Exception as e: pass
 
     def PutsCln(self, cl, data):
         cl += self.base
-        self.write2(self.sb % cl); self.write2(data); self.write2(self.sa +'\n');
+        try:
+            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa +'\n');
+            self.flush2();
+        except Exception as e: pass
 
     def PutsC(self, cl, data):
         cl += self.base
-        self.write2(self.sb % cl); self.write2(data); self.write2(self.sa);
+        try:
+            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa);
+            self.flush2();
+        except Exception as e: pass
 
 
 psp = PSP(base=0, mode=0, debug=True)
