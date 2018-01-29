@@ -49,16 +49,10 @@ class PSP(object):
         if (self.debug):
             self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
 
-    def Puts(self, data):
-        try:
-            self.write2(data);
-            if ( str(data).endswith('\n') ): self.flush2();
-        except Exception as e: pass
-
     def PutsCln(self, cl, data):
         cl += self.base
         try:
-            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa +'\n');
+            self.write2(self.sb % cl); self.write2(data); self.write2(self.sa); self.write2('\n');
             self.flush2();
         except Exception as e: pass
 
