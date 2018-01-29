@@ -33,6 +33,9 @@ class PSP(object):
     @property
     def write(self): return sys.stdout.write
 
+    @propery
+    def write2(self): return sys.__stderr__.write
+
     def __init__(self, base=0, mode=0, debug=False):
         self.base = base
         self.mode = mode
@@ -41,30 +44,16 @@ class PSP(object):
             self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
 
     def Puts(self, data):
-        try: self.write(data);
+        try: self.write2(data);
         except Exception as e: pass
 
     def PutsCln(self, cl, data):
         cl += self.base
-        self.write(self.sb % cl); print(data); self.write(self.sa);
+        self.write2(self.sb % cl); self.write2(data); self.write2(self.sa +'\n');
 
     def PutsC(self, cl, data):
         cl += self.base
-        self.write(self.sb % cl); self.write(data); self.write(self.sa);
-
-class getpsp:
-    @property
-    def get(self):
-        if self._sb is not None: return self._sb
-        else: self._sb = '\033[01;%dm'; self._sa = '\033[0;0m';
-        return self._sb
-
-    def __init__(self, base=0, mode=0, debug=False):
-        self.base = base
-        self.mode = mode
-        self.debug = debug
-        if (self.debug):
-            self.PutsCln(PSP.bldwht, '\n\t>>>> psp init <<<<<\n')
+        self.write2(self.sb % cl); self.write2(data); self.write2(self.sa);
 
 
 psp = PSP(base=0, mode=0, debug=True)
@@ -92,4 +81,4 @@ whtln = lambda m: psp.PutsCln(PSP.wht, m);
 whtbln = lambda m: psp.PutsCln(PSP.bldwht, m);
 
 
-__version__ = '0.0.dev5'
+__version__ = '0.0.6'
